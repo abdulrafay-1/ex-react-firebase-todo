@@ -10,6 +10,7 @@ const ProtectedRoute = ({ children }) => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
+        navigate("/");
         // const uid = user.uid;
       } else {
         setIsLogin(false);
