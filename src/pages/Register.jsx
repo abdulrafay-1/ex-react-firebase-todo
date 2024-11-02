@@ -21,6 +21,7 @@ const Register = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
+        localStorage.setItem("loggedUser", JSON.stringify(user));
         setError(false);
       })
       .catch((error) => {
