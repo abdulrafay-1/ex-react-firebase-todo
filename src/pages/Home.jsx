@@ -45,7 +45,7 @@ const Home = () => {
     if (!todoInput.current.value.trim()) {
       return;
     }
-    if (editId?.docid) {
+    if (isEdit) {
       const find = todo.find((item) => item.docid === editId.docid);
       find.title = todoInput.current.value;
       setTodo([...todo]);
@@ -54,6 +54,7 @@ const Home = () => {
         title: todoInput.current.value,
       });
       setEditId(null);
+      setIsEdit(false)
     } else {
       try {
         const docRef = await addDoc(collection(db, "todo"), {
@@ -85,7 +86,7 @@ const Home = () => {
     setIsEdit(true);
     todoInput.current.focus();
     todoInput.current.select();
-    setEditId(true);
+    // setEditId(true);
   };
   const deleteTodo = async (id) => {
     console.log(id);
